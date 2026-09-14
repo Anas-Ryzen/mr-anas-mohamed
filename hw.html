@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hom Work</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="loader-overlay" class="loader-overlay">
+        <div id="loader" class="loader"></div>
+    </div>
+    
+    <nav>
+        <ul class="left">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html">Courses</a></li>
+        </ul>
+        <ul class="right">
+            <li>
+                <a>
+                    <span id="wallet" class="wallet-balance">0</span>
+                    <i class="fas fa-wallet"></i>
+                </a>
+            </li>
+            <li class="user-dropdown">
+                <a id="user-icon">
+                    <i class="fas fa-user"></i>
+                </a>
+                <div id="user-info" class="user-info-box">
+                    <p><span id="icon-usernamejs">جاري التحميل</span><i class="fas fa-user"></i></p>
+                    <a href="recharge-wallet.html" id="recharge-wallet">
+                        شحن المحفظة
+                        <i class="fas fa-wallet"></i>
+                    </a>
+                </div>
+            </li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <div id="simpleModal" class="modal">
+        <div class="modal-content">
+          <h2 id="message">تحذير!</h2>
+          <div class="modal-buttons">
+            <button class="modal-btn" id="yesBtn">نعم</button>
+            <button class="modal-btn" id="noBtn">لا</button>
+          </div>
+        </div>
+      </div>
+
+    <div id="course-header">
+        <h1 id="course-title">جاري التحميل</h1>
+        <p id="course-description">جاري التحميل</p>
+    </div>
+
+    <div class="center-container">
+        <div id="questionProgress" class="question-progress">جاري التحميل</div>
+    </div>
+    
+    <div class="quiz-container">
+        <h1 id="question">جاري تحميل السؤال</h1>
+        <div class="options">
+            <button class="option">جاري تحميل الخيارات</button>
+            <button class="option">جاري تحميل الخيارات</button>
+            <button class="option">جاري تحميل الخيارات</button>
+            <button class="option">جاري تحميل الخيارات</button>
+        </div>
+        <div class="buttons">
+            <button id="prevQuestion">السؤال السابق</button>
+            <button id="submitExam">تسليم الواجب</button>
+            <button id="nextQuestion">السؤال التالي</button>
+        </div>
+    </div>
+    
+    <div id="loginPopup" class="popup"></div>
+
+    <div id="result">... جاري تحميل النتيجه</div>
+    <button id="back">العوده الي صفحه الكورس</button>
+
+    <script src="security.js"></script>
+    <script src="hw.js"></script>
+</body>
+</html>

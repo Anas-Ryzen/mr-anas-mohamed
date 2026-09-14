@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recharge-wallet</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div id="loader-overlay" class="loader-overlay">
+        <div id="loader" class="loader"></div>
+    </div>
+    <nav>
+        <ul class="left">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html">Courses</a></li>
+        </ul>
+        <ul class="right">
+            <li>
+                <a>
+                    <span id="wallet" class="wallet-balance">0</span>
+                    <i class="fas fa-wallet"></i>
+                </a>
+            </li>
+            <li class="user-dropdown">
+                <a id="user-icon">
+                    <i class="fas fa-user"></i>
+                </a>
+                <div id="user-info" class="user-info-box">
+                    <p><span id="icon-usernamejs">جاري التحميل</span><i class="fas fa-user"></i></p>
+                    <a id="recharge-wallet">
+                        شحن المحفظة
+                        <i class="fas fa-wallet"></i>
+                    </a>
+                </div>
+            </li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+    <div id="loginPopup" class="popup"></div>
+
+    <div class="wallet-container">
+        <h2>شحن المحفظة</h2>
+        <div class="input-group">
+            <input type="number" id="amount" placeholder="أدخل المبلغ">
+            <i class="fa-solid fa-coins"></i>
+        </div>
+        <button id="recharge-btn"><i class="fa-solid fa-wallet"></i> شحن المحفظة</button>
+    </div>
+
+    <script src="security.js"></script>
+    <script src="recharge-wallet.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <ul class="left">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html">Courses</a></li>
+        </ul>
+        <ul class="right">
+            <li>
+                <a>
+                    <span id="wallet" class="wallet-balance">0</span>
+                    <i class="fas fa-wallet"></i>
+                </a>
+            </li>
+            <li class="user-dropdown">
+                <a id="user-icon">
+                    <i class="fas fa-user"></i>
+                </a>
+                <div id="user-info" class="user-info-box">
+                    <p><span id="icon-usernamejs">جاري التحميل</span><i class="fas fa-user"></i></p>
+                    <a href="recharge-wallet.html" id="recharge-wallet">
+                        شحن المحفظة
+                        <i class="fas fa-wallet"></i>
+                    </a>
+                </div>
+            </li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+    <div id="loader-overlay" class="loader-overlay">
+        <div id="loader" class="loader"></div>
+    </div>
+    <div id="course-header">
+        <h1 id="course-title">جاري التحميل</h1>
+        <p id="course-description">جاري التحميل</p>
+    </div>
+
+    <div class="expandable-section">
+        <div class="section-header" onclick="toggleSection(this)">
+            <span>فيديو الشرح</span>
+            <i class="fas fa-chevron-right arrow"></i>
+        </div>
+        <div class="section-content">
+            <div class="video-container">
+                <iframe id="course-video" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="expandable-section" id="assignment-section">
+        <div class="section-header" onclick="toggleSection(this)">
+            <span>الواجب</span>
+            <i class="fas fa-chevron-right arrow"></i>
+        </div>
+        <div class="section-content">
+            <a id="open-assignment">فتح الواجب</a>
+            <div id="theresults">النتائج السابقه</div>
+            <div id="pastresults"></div>
+        </div>
+    </div>
+
+    <div id="loginPopup" class="popup"></div>
+    <script>
+        function toggleSection(header) {
+            let section = header.parentElement;
+            let content = section.querySelector(".section-content");
+            let arrow = section.querySelector(".arrow");
+
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                section.classList.remove("expanded");
+            } else {
+                content.style.display = "block";
+                section.classList.add("expanded");
+            }
+        }
+    </script>
+    <script src="lesson.js"></script>
+    <script src="security.js"></script>
+</body>
+</html>

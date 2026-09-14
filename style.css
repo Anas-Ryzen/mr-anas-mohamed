@@ -1,0 +1,1041 @@
+/* Reset Styles */
+body, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+/* تخصيص شريط التمرير */
+::-webkit-scrollbar {
+    width: 8px; /* عرض شريط التمرير */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* خلفية المسار */
+    border-radius: 10px; /* حواف مستديرة */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #007bff; /* اللون الأزرق */
+    border-radius: 10px; /* حواف مستديرة */
+    border: 2px solid #f1f1f1; /* إطار لإبراز التمرير */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #0056b3; /* لون أغمق عند التمرير */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* Navigation Styles */
+/* تصميم شريط التنقل */
+nav {
+    background-color: #007BFF; /* لون أزرق أساسي */
+    padding: 15px 30px;
+    border-radius: 15px; /* زوايا دائرية */
+    width: 90%; /* ضبط العرض */
+    max-width: 1200px; /* تحديد الحد الأقصى للعرض */
+    margin: 20px auto; /* توسيط شريط التنقل */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* إضافة ظل */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+}
+
+nav ul.left {
+    /* القائمة اليسرى */
+    flex: 1;
+}
+
+nav ul.right {
+    /* القائمة اليمنى */
+    justify-content: flex-end;
+    flex: 0;
+}
+
+nav ul li a {
+    text-decoration: none; /* إزالة التسطير */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 8px; /* زوايا مستديرة */
+    transition: all 0.3s ease-in-out; /* انتقال سلس */
+    display: flex;
+    align-items: center;
+    gap: 8px; /* مسافة بين الأيقونة والنص */
+    position: relative;
+}
+
+nav ul li a i {
+    font-size: 18px; /* حجم الأيقونة */
+}
+
+/* تنسيق رصيد المحفظة */
+.wallet-balance {
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #28a745; /* لون أخضر */
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px; /* تصميم دائري */
+    display: inline-block;
+    text-align: center;
+    min-width: 40px; /* محاذاة مناسبة */
+}
+
+nav ul li a:hover {
+    background-color: #0056b3; /* لون أزرق داكن عند التمرير */
+    color: #f4f4f4;
+}
+
+/* تصميم القائمة المنسدلة للمستخدم */
+.user-dropdown {
+    position: relative;
+}
+
+.user-dropdown a {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+/* تصميم صندوق معلومات المستخدم */
+.user-info-box {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    width: 200px;
+    text-align: right;
+    font-size: 14px;
+    color: black;
+    z-index: 100;
+}
+
+/* تعديل اسم المستخدم وإضافة أيقونة */
+.user-info-box p {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-right: 10px;
+    gap: 8px; /* مسافة بين الأيقونة والاسم */
+    font-size: 17px;
+    font-family: "Tajawal", sans-serif;
+}
+
+.user-info-box p i {
+    color: #007BFF;
+    font-size: 18px;
+}
+
+/* إظهار معلومات المستخدم عند التمرير */
+.user-dropdown:hover .user-info-box {
+    display: block;
+}
+
+/* تصميم زر شحن المحفظة */
+#recharge-wallet {
+    display: flex;
+    align-items: center;
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    font-weight: normal;
+    justify-content: right;
+    font-family: "Tajawal", sans-serif;
+    font-size: 17px;
+}
+#recharge-wallet:hover {
+    background: none;
+}
+#recharge-wallet i {
+    font-size: 18px;
+    color: #007BFF; /* لون الأيقونة */
+}
+/* Login Container */
+.login-container {
+    max-width: 400px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Input Fields */
+.login-container input {
+    width: 90%;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-container input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Login Button */
+.login-container button {
+    width: 98%;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007BFF;
+    border: 2px solid #007BFF;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.4s;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-container button:hover {
+    background-color: #f4f4f4;
+    border: 2px solid #007BFF;
+    color: #007BFF;
+    transition: 0.4s;
+}
+
+/* Registration Link */
+.login-container p {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #555;
+}
+
+.login-container p a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.login-container p a:hover {
+    color: #0056b3;
+}
+/* Registration Form Styles */
+.registration-container {
+    max-width: 500px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.registration-container h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.registration-container input {
+    width: 90%;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.registration-container select {
+    width: 97%;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.registration-container input:focus,
+.registration-container select:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+.registration-container select {
+    text-align: left;
+}
+
+.registration-container button {
+    width: 98%;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #007BFF;
+    transition: 0.4s;
+}
+
+.registration-container button:hover {
+    background-color: #f4f4f4;
+    color: #007BFF;
+    border: 2px solid #007BFF;
+    transition: 0.4s;
+}
+/* تنسيق النص داخل الـ registration-container */
+.registration-container p {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+}
+
+/* تنسيق الرابط داخل الـ p */
+.registration-container p a {
+    color: #007BFF; /* اللون الأزرق للمحتوى */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.registration-container p a:hover {
+    color: #0056b3; /* اللون عند التمرير بالماوس */
+}
+
+.popup {
+    z-index: 1000;
+    padding: 12px;
+    color: #333; /* نص داكن */
+    background-color: #e0e0e0; /* لون الخلفية */
+    position: fixed;
+    top: 150px; /* مكان الـ popup ثابت */
+    right: 43%;
+    width: 200px; /* عرض أصغر */
+    border-radius: 15px; /* زيادة الزوايا المنحنية */
+    text-align: center;
+    display: none; /* مخفي في البداية */
+    opacity: 0; /* مخفي في البداية */
+    animation: fadeIn 0.2s ease-out forwards, fadeOut 0.5s ease-out forwards 4s; /* مدة الفايد إن أقل */
+}
+
+/* حركة الفايد إن */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* يبدأ مخفيًا */
+    }
+    to {
+        opacity: 1; /* يظهر تدريجيًا */
+    }
+}
+
+
+/* حركة الفايد أوت */
+@keyframes fadeOut {
+    from {
+        opacity: 1; /* يبدأ مرئيًا */
+    }
+    to {
+        opacity: 0; /* يختفي تدريجيًا */
+    }
+}
+
+.courses-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 20px;
+    gap: 15px; /* مسافة صغيرة بين الكروت */
+}
+
+.course {
+    background-color: #f9f9f9; /* لون خلفية خفيف */
+    border: 1px solid #ddd; /* حدود خفيفة */
+    border-radius: 10px; /* حواف مستديرة */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* ظل خفيف لإبراز الكرت */
+    width: 300px; /* عرض ثابت للكروت */
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* تأثير تكبير الكرت */
+}
+
+.course:hover {
+    transform: scale(1.03); /* تكبير الكرت قليلاً */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* زيادة الظل عند التمرير */
+}
+
+.course h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.course p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    font-weight: bold;
+}
+.course p:hover {
+    color: #007bff;
+    cursor: context-menu;
+}
+
+.course button {
+    background-color: #007bff; /* لون أزرق */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px; /* حواف مستديرة */
+    transition: 0.3s;
+    border: 1px solid #007bff;
+}
+
+.course button:hover {
+    background-color: #f4f4f4; /* لون أزرق أغمق قليلاً عند التمرير */
+    color: #007bff;
+    border: 1px solid #007bff;
+    transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    .courses-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .course {
+        width: 100%; /* تصغير الكروت على الشاشات الصغيرة */
+    }
+    nav {
+        background-color: #007BFF; /* اللون الأساسي */
+        padding: 10px 15px; /* تقليل الحواف لتناسب الشاشات الصغيرة */
+        border-radius: 0; /* إزالة الزوايا الدائرية لتغطية العرض الكامل */
+        width: 100%; /* عرض كامل للشاشة */
+        margin: 0; /* إزالة الهوامش */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between; /* توزيع العناصر بالتساوي */
+        align-items: center;
+    }
+
+    nav ul {
+        display: flex;
+        gap: 15px; /* تقليل المسافات بين العناصر */
+        align-items: center;
+        padding: 0;
+        list-style: none;
+    }
+
+    nav ul.left {
+        justify-content: flex-start; /* محاذاة العناصر في أقصى اليسار */
+    }
+
+    nav ul.right {
+        justify-content: flex-end; /* محاذاة العناصر في أقصى اليمين */
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 16px; /* تصغير حجم النص ليناسب الشاشات الصغيرة */
+        font-weight: bold;
+        padding: 8px 5px; /* تصغير الحواف */
+        border-radius: 5px; /* زوايا ناعمة */
+        display: flex;
+        align-items: center;
+        gap: 6px; /* مسافة بين الأيقونة والنص */
+        transition: all 0.3s ease-in-out;
+    }
+
+    nav ul li a i {
+        font-size: 20px; /* تقليل حجم الأيقونة */
+    }
+
+    .wallet-balance {
+        font-size: 12px; /* تصغير النص */
+        font-weight: bold;
+        background-color: #28a745;
+        color: white;
+        padding: 2px 6px;
+        border-radius: 8px;
+        display: inline-block;
+        min-width: 30px;
+        text-align: center;
+    }
+
+    nav ul li a:hover {
+        background-color: #0056b3;
+        color: #f4f4f4;
+    }
+}
+
+
+#overlay{
+    position: fixed;
+    top: 0;
+    z-index: 2000;
+    width: 100%;
+    display: none;
+    height: 100%
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 100%; /* يمنع تجاوز الصورة لعرض الصفحة */
+}
+
+.image-container img {
+    width: 100%; /* تجعل الصورة تأخذ عرض الحاوية */
+    max-width: 600px; /* أقصى عرض للصورة */
+    height: auto; /* الحفاظ على نسب الصورة */
+    border-radius: 10px; /* جعل الزوايا مستديرة */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* إضافة ظل لطيف للصورة */
+}
+
+/* تصميم اسم الكورس والوصف مع خلفية زرقاء صغيرة */
+#course-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    color: black;
+}
+
+#course-title, #course-description {
+    padding: 8px 20px;
+    background: #007BFF;
+    color: white;
+    border-radius: 5px;
+    font-size: 20px;
+    margin: 3px 0;
+}
+
+/* تحسين لون expandable-section */
+.expandable-section {
+    width: 80%;
+    background: #f1f1f1;
+    margin: 20px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+}
+
+/* العنوان الرئيسي لكل قسم */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    background: #e0e0e0;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+/* شكل السهم مع تحسين الحركة */
+.arrow {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.expanded .arrow {
+    transform: rotate(90deg);
+}
+
+/* محتوى القسم */
+.section-content {
+    padding: 15px;
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* تأثير سلس عند ظهور المحتوى */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* حاوية الفيديو لجعل الفيديو متجاوبًا ويظهر بشكله الأصلي */
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* نسبة العرض إلى الارتفاع 16:9 */
+}
+
+#course-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+/* زر فتح الواجب */
+#open-assignment {
+    display: block;
+    padding: 10px;
+    background: #007bff;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px #007bff solid;
+    text-decoration: none;
+    margin-top: 10px;
+    font-size: 16px;
+    transition: 0.4s;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+#open-assignment:hover {
+    background-color: #f9f9f9;
+    color: #007bff;
+    transition: 0.4s;
+}
+/* تنسيق عنوان النتائج السابقة */
+#theresults {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    background: #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* تنسيق حاوية النتائج */
+#pastresults {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    max-height: 200px;
+    overflow-y: auto; /* السماح بالتمرير عند زيادة المحتوى */
+}
+
+/* تنسيق كل نتيجة فردية */
+#pastresults div {
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    border-left: 5px solid #007BFF; /* شريط جانبي لإبراز النتائج */
+    font-size: 16px;
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* تحسين مظهر التمرير */
+#pastresults::-webkit-scrollbar {
+    width: 8px;
+}
+
+#pastresults::-webkit-scrollbar-thumb {
+    background: #007BFF;
+    border-radius: 10px;
+}
+
+#pastresults::-webkit-scrollbar-track {
+    background: #ddd;
+}
+
+/* 🟦 تنسيق حاوية الاختبار */
+.quiz-container {
+    max-width: 600px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* 🔵 عنوان السؤال */
+.quiz-container h1 {
+    font-size: 20px;
+    color: #007BFF; /* لون رئيسي مثل أزرار المنصة */
+    margin-bottom: 15px;
+}
+
+/* 🎯 تنسيق الأزرار (الخيارات) */
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* تباعد بين الأزرار */
+}
+
+.option {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007BFF;
+    border: 2px solid #007BFF;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-weight: bold;
+}
+
+.option:hover {
+    background-color: transparent;
+    border: 2px solid #007BFF;
+    color: #007BFF;
+}
+
+/* ✅ عند اختيار الإجابة الصحيحة */
+.option.correct {
+    background-color: #28a745 !important; /* أخضر */
+    border-color: #28a745 !important;
+    color: white !important;
+}
+
+/* ❌ عند اختيار إجابة خاطئة */
+.option.wrong {
+    background-color: #dc3545 !important; /* أحمر */
+    border-color: #dc3545 !important;
+    color: white !important;
+}
+
+/* 🏆 نتيجة الاختبار */
+#result {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    display: none; /* لا يظهر افتراضيًا، ستتم إدارته عبر JS */
+}
+
+/* 🖥️ تصميم متجاوب للهواتف */
+@media (max-width: 768px) {
+    .quiz-container, #result {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .option {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+#back {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: #007BFF; /* لون الزر */
+    border: 2px solid #007BFF;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+#back:hover {
+    transition: 0.4s;
+    background-color: #f4f4f4;
+    border: 2px solid #007BFF;
+    color: #007BFF;
+}
+/* تنسيق صفحة شحن المحفظة */
+.wallet-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.wallet-container h2 {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #f1f1f1;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.input-group input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    font-family: 'Tajawal', sans-serif;
+    text-align: right;
+    padding: 5px 10px;
+}
+
+.input-group i {
+    color: #007BFF;
+    font-size: 20px;
+}
+
+#recharge-btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    border: none;
+    background: #007BFF;
+    color: white;
+    font-size: 16px;
+    font-family: 'Tajawal', sans-serif;
+    font-weight: bold;
+    border-radius: 8px;
+    border: 2px #007BFF solid;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    transition: 0.4s;
+}
+
+#recharge-btn:hover {
+    transition: 0.4s;
+    color: #007BFF ;
+    background-color: #f4f4f4;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.buttons button {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#prevQuestion {
+    transition: 0.4s;
+    border: 2px  #808080 solid;
+    background-color: #808080;
+    color: white;
+}
+
+#prevQuestion:hover {
+    transition: 0.4s;
+    background-color: transparent;
+    color: #808080 ;
+}
+
+#submitExam {
+    transition: 0.4s;
+    border: 2px  #d9534f solid;
+    background-color: #d9534f;
+    color: white;
+}
+
+#submitExam:hover {
+    transition: 0.4s;
+    background-color: transparent;
+    color: #d9534f;
+}
+
+#nextQuestion {
+    transition: 0.4s;
+    border: 2px  #007BFF solid;
+    background-color: #007BFF;
+    color: white;
+}
+
+#nextQuestion:hover {
+    transition: 0.4s;
+    color: #007BFF;
+    background-color: transparent;
+}
+
+
+.option.selected {
+    background-color: #f4f4f4;
+    border-color: #007BFF;
+    color: #007BFF;
+    font-weight: bold;
+}
+/* تحديد تنسيق الحاوية التي تحتوي على العداد */
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* تصميم العداد الخاص بتقدم الأسئلة */
+.question-progress {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #007BFF; /* اللون الأزرق للعداد */
+    background-color: #f4f4f4; /* الخلفية الفاتحة */
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* تأثير الظل */
+}
+
+/* تأثير عند المرور على العداد */
+.question-progress:hover {
+    background-color: #e2e2e2; /* تغيير اللون عند المرور */
+    cursor: pointer;
+}
+
+/* تأثير الـ Overlay */
+.loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #007BFF;
+    border-top: 5px solid transparent; /* جزئية غير مكتملة من الدائرة */
+    border-radius: 50%;
+    animation: spin 1s linear infinite; /* جعل التدوير أسرع */
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
+
+
+/* إعدادات المودال */
+.modal {
+    display: none; /* المودال مخفي بشكل افتراضي */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* خلفية مظلمة خفيفة */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* محتوى المودال */
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* تصميم الأزرار */
+  .modal-buttons {
+    margin-top: 20px;
+  }
+  
+  .modal-btn {
+    padding: 10px 35px;
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0 10px;
+    border: 2px solid #007BFF;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .modal-btn:hover {
+    background-color: transparent;
+    border: 2px solid #007BFF;
+    color: #007BFF;
+  }
+  

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="loader-overlay" class="loader-overlay">
+        <div id="loader" class="loader"></div>
+    </div>
+    <nav>
+        <ul class="left">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html">Courses</a></li>
+        </ul>
+        <ul class="right">
+            <li>
+                <a>
+                    <span id="wallet" class="wallet-balance">0</span>
+                    <i class="fas fa-wallet"></i>
+                </a>
+            </li>
+            <li class="user-dropdown">
+                <a id="user-icon">
+                    <i class="fas fa-user"></i>
+                </a>
+                <div id="user-info" class="user-info-box">
+                    <p><span id="icon-usernamejs">جاري التحميل</span><i class="fas fa-user"></i></p>
+                    <a href="recharge-wallet.html" id="recharge-wallet">
+                        شحن المحفظة
+                        <i class="fas fa-wallet"></i>
+                    </a>
+                </div>
+            </li>
+            <li><a>Login</a></li>
+        </ul>
+    </nav>
+
+    <div class="registration-container">
+        <h2>إنشاء حساب جديد</h2>
+        <div class="registration-form">
+            <input type="text" placeholder="اسم الطالب" id="student-name" required>
+            <input type="text" placeholder="اسم الاب" id="father-name" required>
+            <input type="text" placeholder="اسم الجد" id="grand-father-name" required>
+            <input type="number" placeholder="رقم هاتف الطالب" id="student-phone" required>
+            <input type="number" placeholder="رقم هاتف ولي الامر" id="guardian-phone" required>
+            <input type="text" placeholder="كلمه السر" id="password" required>
+            
+            
+            <select id="grade" required>
+                <option value="" disabled selected>الصف الدراسي</option>
+                <option value="الصف الاول">الصف الأول الثانوي</option>
+                <option value="الصف الثاني">الصف الثاني الثانوي</option>
+                <option value="الصف الثالث">الصف الثالث الثانوي</option>
+            </select>
+
+            <button id="register">إنشاء الحساب</button>
+        </div>
+        <div id="loginPopup" class="popup"></div>
+        <!-- رابط العودة إلى صفحة الـ Login -->
+        <p>هل لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول </a></p>
+        <p id="prom"></p>
+    </div>
+    <script src="register.js"></script>
+    <script src="security.js"></script>
+</body>
+</html>
