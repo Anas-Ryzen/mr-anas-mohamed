@@ -6,7 +6,17 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {
       loaderOverlay.style.display = 'none'; // إخفاء الـ overlay والدائرة
     }, 500);
-}); 
+});
+
+
+if (localStorage.token){
+    localStorage.youhaveaccount = 'yes'
+    location.href = 'login.html'
+}
+
+if(localStorage.number){
+    localStorage.removeItem('number')
+}
 const sheetId = '1ou-3Gr1pOsRVlSoN4Ou0go51qS6OKxYL_RbfcBnPmwE'; // استبدل بـ ID الخاص بجدول البيانات
 const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv`;
 let register = document.getElementById("register")
@@ -47,7 +57,7 @@ fetch(csvUrl)
             // إجبار Google Sheets على معاملة الرقم كنص
             studentPhone = "'" + studentPhone;
             guardianPhone = "'" + guardianPhone;
-            if(localStorage.studentName && localStorage.fatherName && localStorage.studentPhone && localStorage.guardianPhone && localStorage.password){
+            if(localStorage.token){
                 displaySuccessPopup('لديك حساب بالفعل')
                 register.disabled = false
                 return ;
@@ -74,7 +84,6 @@ fetch(csvUrl)
             }
 
             displaySuccessPopup('جاري إنشاء الحساب ، يرجى الإنتظار')
-            register.disabled = false
 
             fetch(scriptUrl, {
                 method: 'POST',
@@ -94,13 +103,14 @@ fetch(csvUrl)
                 studentPhone = studentPhone.startsWith("'") ? studentPhone.slice(1) : studentPhone;
                 guardianPhone = guardianPhone.startsWith("'") ? guardianPhone.slice(1) : guardianPhone;
 
-                localStorage.setItem('studentName', studentName);
-                localStorage.setItem('fatherName', fatherName);
-                localStorage.setItem('grandFatherName', grandFatherName);
-                localStorage.setItem('studentPhone', studentPhone);
-                localStorage.setItem('guardianPhone', guardianPhone);
-                localStorage.setItem('password', password);
-                localStorage.setItem('grade', grade);
+                // localStorage.setItem('studentName', studentName);
+                // localStorage.setItem('fatherName', fatherName);
+                // localStorage.setItem('grandFatherName', grandFatherName);
+                // localStorage.setItem('studentPhone', studentPhone);
+                // localStorage.setItem('guardianPhone', guardianPhone);
+                // localStorage.setItem('password', password);
+                // localStorage.setItem('grade', grade);
+
                 localStorage.setItem('token', token);
                 localStorage.registeredsuccesfuly = 'yes';
                 location.href = 'login.html';

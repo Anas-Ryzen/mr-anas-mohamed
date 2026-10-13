@@ -7,6 +7,11 @@ document.addEventListener('DOMContentLoaded', function() {
       loaderOverlay.style.display = 'none'; // إخفاء الـ overlay والدائرة
     }, 500);
 }); 
+if(localStorage.number){
+    localStorage.removeItem('number')
+}
+localStorage.removeItem("name")
+localStorage.removeItem("description")
 function displaySuccessPopup(textinp) {
     const popup = document.getElementById("loginPopup");
     popup.style.display = "block";
@@ -15,9 +20,6 @@ function displaySuccessPopup(textinp) {
     setTimeout(function() {
         popup.style.display = "none";
     }, 3500);
-}
-if(!localStorage.studentName || !localStorage.fatherName || !localStorage.studentPhone || !localStorage.guardianPhone || !localStorage.password || !localStorage.grade){
-    location.href = 'register.html'
 }
 if(!localStorage.isLoggedIn){
     setTimeout(function(){
@@ -82,3 +84,4 @@ fetch(csvUrl)
         }
     })
     .catch(error => console.error("حدث خطأ أثناء جلب البيانات:", error));
+    

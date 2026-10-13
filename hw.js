@@ -36,17 +36,7 @@ function openmodal(){
     simpleModal.style.display = "flex"
     message.innerHTML = "هل انت متاكد من تسليم الواجب ؟"
 }
-if(sessionStorage.name && sessionStorage.description && sessionStorage.link && sessionStorage.number){
-    localStorage.name = sessionStorage.name
-    localStorage.description = sessionStorage.description
-    localStorage.link = sessionStorage.link
-    localStorage.number = sessionStorage.number
-    sessionStorage.removeItem("name")
-    sessionStorage.removeItem("description")
-    sessionStorage.removeItem("link")
-    sessionStorage.removeItem("number")
-}
-if(!localStorage.name || !localStorage.description || !localStorage.link || !localStorage.number && !localStorage.token){
+if(!localStorage.token){
     localStorage.joinagain = 'yes'
     location.href = "courses.html"
 }
@@ -58,22 +48,19 @@ let result = document.getElementById("result");
 let title = document.getElementById("course-title");
 let des = document.getElementById("course-description");
 
-window.onbeforeunload = function() {
-    sessionStorage.name = namee
-    sessionStorage.description = description
-    sessionStorage.link = link
-    sessionStorage.number = selectedClassNumber
-};
-
-title.innerHTML = localStorage.name;
 let namee = localStorage.name;
-des.innerHTML = localStorage.description;
+title.innerHTML = namee;
 let description = localStorage.description;
-let link = localStorage.link;
-
+des.innerHTML = description;
 localStorage.removeItem("name");
 localStorage.removeItem("description");
-localStorage.removeItem("link");
+window.onbeforeunload = function() {
+    localStorage.name = namee
+    localStorage.description = description
+    localStorage.number = selectedClassNumber
+};
+
+
 
 const sheetId = "10lifxmFuDr_qmaYiWVpLxzgbknoiTqJ6pNkLEIb_Hfc"; 
 const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv`;
@@ -99,10 +86,7 @@ function loadQuestions() {
             if (questions.length === 0) {
                 console.error("لا توجد أسئلة لهذه الحصة.");
                 localStorage.nohwyet = "yes";
-                localStorage.name = namee;
-                localStorage.description = description.replace(/&amp;/g, "&");
                 localStorage.number = selectedClassNumber;
-                localStorage.link = link;
                 location.href = "lesson.html";
                 return;
             }
@@ -111,7 +95,11 @@ function loadQuestions() {
             const loaderOverlay = document.getElementById('loader-overlay');
             loaderOverlay.style.display = 'none';
         })
-        .catch((error) => console.error("Error fetching questions:", error));
+        .catch((error) => {
+            location.href = 'index.html';
+            console.error("Error fetching questions:", error);
+            
+        });
 }
 
 function extractQuestions(row) {
@@ -291,10 +279,7 @@ window.onload = loadQuestions;
 
 let back = document.getElementById("back");
 back.onclick = function () {
-    localStorage.name = namee;
-    localStorage.description = description.replace(/&amp;/g, "&");
     localStorage.number = selectedClassNumber;
-    localStorage.link = link;
     location.href = "lesson.html";
 };
 

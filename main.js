@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
       loaderOverlay.style.display = 'none'; // إخفاء الـ overlay والدائرة
     }, 500);
 }); 
+
 function displaySuccessPopup(textinp) {
     const popup = document.getElementById("loginPopup");
     popup.style.display = "block";
@@ -23,9 +24,6 @@ if(localStorage.loggedinsuccesfully == 'yes'){
         localStorage.removeItem('loggedinsuccesfully')
     },300)
 }
-if(!localStorage.studentName || !localStorage.fatherName || !localStorage.studentPhone || !localStorage.guardianPhone || !localStorage.password || !localStorage.grade){
-    location.href = 'register.html'
-}
 if(!localStorage.isLoggedIn){
     setTimeout(function(){
         location.href = 'login.html'
@@ -36,3 +34,9 @@ if(!localStorage.token){
         location.href = 'login.html'
     },300)
 }
+
+if(localStorage.number){
+    localStorage.removeItem('number')
+}
+localStorage.removeItem("name")
+localStorage.removeItem("description")

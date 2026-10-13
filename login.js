@@ -12,20 +12,27 @@ let password = document.getElementById("password").value
 let login = document.getElementById("login")
 let prom = document.getElementById("prom")
 login.disabled = true;
-displaySuccessPopup('جاري تحميل البيانات')
+if(localStorage.youhaveaccount == 'yes'){
+    setTimeout(function(){
+        displaySuccessPopup('لديك حساب بالفعل')
+        localStorage.removeItem('youhaveaccount')
+    },300)
+}
 
+if(localStorage.number){
+    localStorage.removeItem('number')
+}
 const sheetId = '1ou-3Gr1pOsRVlSoN4Ou0go51qS6OKxYL_RbfcBnPmwE'; // استبدل بـ ID الخاص بجدول البيانات
 const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv`;
 fetch(csvUrl)
     .then(response => response.text())
     .then(data => {
         const rows = data.split('\n'); // تقسيم البيانات إلى صفوف
-        if(localStorage.studentPhone && localStorage.password && localStorage.token){
+        if(localStorage.token){
             for(let i = 0 ; i < rows.length ; i++){
-                if(localStorage.token == rows[i].split(',')[8] && localStorage.studentPhone == rows[i].split(',')[3] && localStorage.password == rows[i].split(',')[5]){
+                if(localStorage.token == rows[i].split(',')[8]){
                     document.getElementById("phonenum").value = rows[i].split(',')[3]
                     document.getElementById("password").value = rows[i].split(',')[5]
-                    displaySuccessPopup('تم تحميل البيانات')
                     login.disabled = false;
                 }
             }
@@ -35,13 +42,6 @@ fetch(csvUrl)
                 if(rows[i].split(',')[3] == document.getElementById("phonenum").value && rows[i].split(',')[5] == document.getElementById("password").value && rows[i].split(',')[7] == 'yes'){
                     localStorage.loggedinsuccesfully = 'yes'
                     localStorage.token = rows[i].split(',')[8]
-                    localStorage.studentName = rows[i].split(',')[0]
-                    localStorage.fatherName = rows[i].split(',')[1]
-                    localStorage.grandFatherName = rows[i].split(',')[2]
-                    localStorage.studentPhone = rows[i].split(',')[3]
-                    localStorage.guardianPhone = rows[i].split(',')[4]
-                    localStorage.password = rows[i].split(',')[5]
-                    localStorage.grade = rows[i].split(',')[6]
                     localStorage.setItem('isLoggedIn', 'true');
                     location.href = 'index.html'
                     return ;
@@ -88,4 +88,3 @@ if(localStorage.registeredsuccesfuly == 'yes'){
         localStorage.removeItem('registeredsuccesfuly')
     },300)
 }
-

@@ -71,12 +71,12 @@ function datacheck(){
             let wallet = document.getElementById("wallet");
             let found = false; // متغير للتحقق إذا تم العثور على البيانات
 
-            if (localStorage.studentName && localStorage.fatherName && localStorage.grandFatherName && localStorage.studentPhone && localStorage.guardianPhone && localStorage.password && localStorage.grade) {
+            if (localStorage.token) {
                 for (let i = 0; i < rows.length; i++) {
-                    if (rows[i].split(',')[3] == localStorage.studentPhone && rows[i].split(',')[8] == localStorage.token && rows[i].split(',')[0] == localStorage.studentName && rows[i].split(',')[1] == localStorage.fatherName && rows[i].split(',')[2] == localStorage.grandFatherName && rows[i].split(',')[6] == localStorage.grade && rows[i].split(',')[5] == localStorage.password){
+                    if (rows[i].split(',')[8] == localStorage.token){
                         wallet.innerHTML = rows[i].split(',')[9]
                         found = true;
-                        iconusernamejs.innerHTML = `اهلا ${localStorage.studentName} ${localStorage.fatherName} ${localStorage.grandFatherName}`
+                        iconusernamejs.innerHTML = `اهلا ${rows[i].split(',')[0]} ${rows[i].split(',')[1]} ${rows[i].split(',')[2]}`
                         break; // توقف البحث بمجرد العثور على البيانات
                     }
                 }
