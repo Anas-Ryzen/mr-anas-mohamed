@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
       loaderOverlay.style.display = 'none'; // إخفاء الـ overlay والدائرة
     }, 500);
 }); 
+localStorage.removeItem("name")
+localStorage.removeItem("description")
 let phonenum = document.getElementById("phonenum").value
 let password = document.getElementById("password").value
 let login = document.getElementById("login")
