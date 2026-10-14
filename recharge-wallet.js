@@ -35,7 +35,6 @@ if(!localStorage.token){
 let amount = document.getElementById("amount")
 let rechargebtn = document.getElementById("recharge-btn")
 
-
 const sheetId = '1ou-3Gr1pOsRVlSoN4Ou0go51qS6OKxYL_RbfcBnPmwE'; // استبدل بـ ID الخاص بجدول البيانات
 const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv`;
 
@@ -46,14 +45,14 @@ fetch(csvUrl)
         let wallet = document.getElementById("wallet");
         let found = false; // متغير للتحقق إذا تم العثور على البيانات
         rechargebtn.onclick = function(){
-            if (localStorage.studentName && localStorage.fatherName && localStorage.grandFatherName && localStorage.studentPhone && localStorage.guardianPhone && localStorage.password && localStorage.grade) {
+            if (localStorage.token) {
                 for (let i = 0; i < rows.length; i++) {
-                    if (rows[i].split(',')[3] == localStorage.studentPhone && rows[i].split(',')[8] == localStorage.token && rows[i].split(',')[0] == localStorage.studentName && rows[i].split(',')[1] == localStorage.fatherName && rows[i].split(',')[2] == localStorage.grandFatherName){
+                    if (rows[i].split(',')[8] == localStorage.token){
                         found = true;
                         if(amount.value.length != 0){
                             if(amount.value >= 20 && amount.value <= 500){
                                 let phoneNumber = "201097799626"; // رقم الهاتف بدون "+"
-                                let message = `اريد شحن المحفظه ، المبلغ ${amount.value} ، الاسم : ${localStorage.studentName} ${localStorage.fatherName} ${localStorage.grandFatherName} ، رقم الهاتف : ${localStorage.studentPhone}`;
+                                let message = `اريد شحن المحفظه ، المبلغ ${amount.value} ، الاسم : ${rows[i].split(',')[0]} ${rows[i].split(',')[1]} ${rows[i].split(',')[2]} ، رقم الهاتف : ${rows[i].split(',')[3]}`;
                             
                                 // تكوين رابط واتساب
                                 let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
