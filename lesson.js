@@ -8,6 +8,7 @@ if(!localStorage.token){
         location.href = 'login.html'
     },300)
 }
+let attachment = document.getElementById('open-attachment')
 document.addEventListener('DOMContentLoaded', function() {
     // عند بدء تحميل الصفحة
     const loaderOverlay = document.getElementById('loader-overlay');
@@ -44,16 +45,6 @@ if(localStorage.nohwyet == 'yes'){
     },300)
 }
 
-
-
-
-
-
-
-
-
-
-
 const sheetId2 = '10lifxmFuDr_qmaYiWVpLxzgbknoiTqJ6pNkLEIb_Hfc'; // ID الخاص بشيت الحصص
 const csvUrl2 = `https://docs.google.com/spreadsheets/d/${sheetId2}/export?format=csv`;
 fetch(csvUrl2)
@@ -70,11 +61,20 @@ fetch(csvUrl2)
                 title.innerHTML = rows[num].split(',')[0]
                 des.innerHTML = rows[num].split(',')[1]
                 videoUrl = rows[num].split(',')[4]
+                let file = rows[num].split(',')[7]
                 let embedUrl = getEmbedUrl(videoUrl);
                 if (embedUrl) {
                     document.getElementById("course-video").src = embedUrl;
                 } else {
                     alert("رابط الفيديو غير مدعوم!");
+                }
+                if(file == ''){
+                    attachment.innerHTML = 'لا يوجد ملفات'
+                }
+                else if(file !== ''){
+                    attachment.onclick = function(){
+                        window.open(`https://cdn.jsdelivr.net/gh/Anas-Ryzen/${file}@main/${file}.pdf` , '_blank')
+                    }
                 }
             }
         })
@@ -120,6 +120,22 @@ function getEmbedUrl(url) {
 
     return "";
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 let pastresults = document.getElementById("pastresults");
 

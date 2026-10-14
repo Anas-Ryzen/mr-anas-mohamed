@@ -65,7 +65,7 @@ function displaySuccessPopup(textinp) {
         popup.style.display = "none";
     }, 3500);
 }
-
+let price
 const sheetId = '10lifxmFuDr_qmaYiWVpLxzgbknoiTqJ6pNkLEIb_Hfc'; // ID الخاص بشيت الحصص
 const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv`;
 
@@ -94,7 +94,6 @@ function displayCourses(courseData) {
             const description = course[1];
             const coursePrice = 'مجانا' // سعر الحصة
             const courseGrade = course[3]; // الصف الدراسي
-            const courseVideoLink = course[4]; // رابط الفيديو
             const number = course[6];
             const courseElement = document.createElement('div');
             courseElement.classList.add('course');
@@ -112,7 +111,6 @@ function displayCourses(courseData) {
             const description = course[1];
             const coursePrice = course[2]; // سعر الحصة
             const courseGrade = course[3]; // الصف الدراسي
-            const courseVideoLink = course[4]; // رابط الفيديو
             const number = course[6];
             const courseElement = document.createElement('div');
             courseElement.classList.add('course');
@@ -130,7 +128,6 @@ function displayCourses(courseData) {
             const description = course[1];
             const coursePrice = course[2]; // سعر الحصة
             const courseGrade = course[3]; // الصف الدراسي
-            const courseVideoLink = course[4]; // رابط الفيديو
             const number = course[6];
             const courseElement = document.createElement('div');
             courseElement.classList.add('course');
@@ -144,7 +141,7 @@ function displayCourses(courseData) {
             `;
             coursesContainer.appendChild(courseElement);
         }
-        
+        price = course[2]
         const loaderOverlay = document.getElementById('loader-overlay');
         loaderOverlay.style.display = 'none';
     });
@@ -180,7 +177,6 @@ function checkAndBuyCourse(num){
                     }
                     else if(usermoney >= Number(rows[num].split(',')[2])){
                         displaySuccessPopup('جاري الإشتراك ، يرجي الإنتظار')
-                        localStorage.boughtsuccesfully = 'yes'
                         for(let i = 0 ; i < rows2.length ; i ++){
                             if(rows2[i].split(',')[8] == localStorage.token){
                                 let newMoney = Number(rows2[i].split(',')[9]) - Number(price)
@@ -188,6 +184,7 @@ function checkAndBuyCourse(num){
                                 wallet.innerHTML = newMoney
                                 let newTokens = rows[num].split(',')[5] + localStorage.token
                                 updateCell2(Number(num)+1 , 6 , newTokens)
+                                localStorage.boughtsuccesfully = 'yes'
                                 setTimeout(function(){
                                     location.reload()
                                 },4500)

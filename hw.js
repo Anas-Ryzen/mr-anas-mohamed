@@ -104,7 +104,7 @@ function loadQuestions() {
 
 function extractQuestions(row) {
     let extractedQuestions = [];
-    for (let i = 7; i < row.length; i += 6) {
+    for (let i = 8; i < row.length; i += 6) {
         if (!row[i] || row[i].trim() === "") break;
 
         extractedQuestions.push([
