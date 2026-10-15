@@ -25,6 +25,29 @@ if(localStorage.number){
 }
 localStorage.removeItem("name")
 localStorage.removeItem("description")
+
+
+
+const sheetId2 = '1ou-3Gr1pOsRVlSoN4Ou0go51qS6OKxYL_RbfcBnPmwE'; // استبدل بـ ID الخاص بجدول البيانات
+const csvUrl2 = `https://docs.google.com/spreadsheets/d/${sheetId2}/export?format=csv`;
+let studentgrade
+fetch(csvUrl2)
+    .then(response => response.text())
+    .then(data => {
+        const rows = data.split('\n'); // تقسيم البيانات إلى صفوف
+        if (localStorage.token) {
+            for (let i = 0; i < rows.length; i++) {
+                if (rows[i].split(',')[8] == localStorage.token){
+                    studentgrade = rows[i].split(',')[6]
+                    break; // توقف البحث بمجرد العثور على البيانات
+                }
+            }
+        }
+    })
+.catch(error => console.error("حدث خطأ أثناء جلب البيانات:", error));
+
+
+
 // استدعاء Google Apps Script لتعديل خلية معينة
 function updateCell(row, column, newValue) {
     const scriptUrl = 'https://script.google.com/macros/s/AKfycbzNNavRmDNDdRUwCab4CvsMJHCCdDoIw17PsdesnUywS1UGgSpOo7qZsbFLtEo2K6Fr/exec'; // ضع هنا رابط الـ Web App المنشور
@@ -90,7 +113,7 @@ function displayCourses(courseData) {
         if(courseName == 'اسم الحصه'){
             
         }
-        else if(coursePrice == 0){
+        else if(coursePrice == 0 && courseGrade == studentgrade){
             const description = course[1];
             const coursePrice = 'مجانا' // سعر الحصة
             const courseGrade = course[3]; // الصف الدراسي
@@ -107,7 +130,7 @@ function displayCourses(courseData) {
             `;
             coursesContainer.appendChild(courseElement);
         }
-        else if(enrolledTokens.includes(localStorage.token)){
+        else if(enrolledTokens.includes(localStorage.token) && courseGrade == studentgrade){
             const description = course[1];
             const coursePrice = course[2]; // سعر الحصة
             const courseGrade = course[3]; // الصف الدراسي
@@ -124,7 +147,7 @@ function displayCourses(courseData) {
             `;
             coursesContainer.appendChild(courseElement);
         }
-        else{
+        else if(courseGrade == studentgrade){
             const description = course[1];
             const coursePrice = course[2]; // سعر الحصة
             const courseGrade = course[3]; // الصف الدراسي
