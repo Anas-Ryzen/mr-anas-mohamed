@@ -104,7 +104,7 @@ function loadQuestions() {
 
 function extractQuestions(row) {
     let extractedQuestions = [];
-    for (let i = 8; i < row.length; i += 6) {
+    for (let i = 10; i < row.length; i += 6) {
         if (!row[i] || row[i].trim() === "") break;
 
         extractedQuestions.push([
@@ -137,25 +137,35 @@ function loadQuestion() {
     // تحديث التقدم
     progressDisplay.innerHTML = `${currentQuestionIndex + 1} / ${questions.length}`;
 
+    // جلب الإجابة التي اختارها المستخدم سابقاً لهذا السؤال (إن وجدت)
+    const savedAnswer = userAnswers[currentQuestionIndex];
+
     for (let i = 0; i < optionButtons.length; i++) {
         if (questions[currentQuestionIndex][i + 2]) {
-            optionButtons[i].textContent = questions[currentQuestionIndex][i + 2];
+            const optionText = questions[currentQuestionIndex][i + 2];
+            optionButtons[i].textContent = optionText;
             optionButtons[i].style.display = "block";
-            optionButtons[i].onclick = function () {
-                selectAnswer(i + 2, optionButtons[i].textContent);
+            
+            optionButtons[i].onclick = function (event) {
+                selectAnswer(i + 2, optionText, event);
             };
 
-            // إعادة تعيين الألوان والحدود إلى حالتها الأصلية
+            // إعادة تعيين الألوان والحدود
             optionButtons[i].classList.remove("selected");
-            optionButtons[i].style.backgroundColor = '';  // إزالة التلوين
-            optionButtons[i].style.color = '';  // إعادة اللون الأصلي
-            optionButtons[i].style.border = '';  // إعادة لون الحدود الأصلي
+            optionButtons[i].style.backgroundColor = ''; 
+            optionButtons[i].style.color = ''; 
+            optionButtons[i].style.border = ''; 
+
+            // إذا كان المستخدم قد اختار هذا الخيار سابقاً، أضف كلاس selected
+            if (savedAnswer && savedAnswer === optionText) {
+                optionButtons[i].classList.add("selected");
+            }
         } else {
             optionButtons[i].style.display = "none";
         }
     }
 
-    // تلوين الإجابات بعد التصحيح
+    // تلوين الإجابات بعد التصحيح (إذا تم تسليم الواجب)
     if (answerStatus[currentQuestionIndex]) {
         const correctAnswer = questions[currentQuestionIndex][1];
         const selectedAnswer = userAnswers[currentQuestionIndex];
@@ -163,29 +173,32 @@ function loadQuestion() {
         optionButtons.forEach((btn) => {
             if (btn.textContent === correctAnswer) {
                 if (selectedAnswer === correctAnswer) {
-                    btn.style.backgroundColor = 'green'; // الإجابة الصحيحة المختارة
-                    btn.style.border = '2px solid green'; // تغيير لون الحدود إلى الأخضر
+                    btn.style.backgroundColor = 'green';
+                    btn.style.border = '2px solid green';
                 } else if (!selectedAnswer) {
-                    btn.style.backgroundColor = 'gray'; // الإجابة الصحيحة غير المختارة
-                    btn.style.border = '2px solid gray'; // تغيير لون الحدود إلى الرمادي
+                    btn.style.backgroundColor = 'gray';
+                    btn.style.border = '2px solid gray';
                 } else {
-                    btn.style.backgroundColor = 'green'; // الإجابة الصحيحة (غير مختارة ولكن يجب إظهارها)
-                    btn.style.border = '2px solid green'; // تغيير لون الحدود إلى الأخضر
+                    btn.style.backgroundColor = 'green';
+                    btn.style.border = '2px solid green';
                 }
                 btn.style.color = 'white';
             } else if (btn.textContent === selectedAnswer && selectedAnswer !== correctAnswer) {
-                btn.style.backgroundColor = 'red'; // الإجابة الخاطئة المختارة
-                btn.style.border = '2px solid red'; // تغيير لون الحدود إلى الأحمر
+                btn.style.backgroundColor = 'red';
+                btn.style.border = '2px solid red';
                 btn.style.color = 'white';
             }
         });
     }
 }
 
-function selectAnswer(index, selectedText) {
+function selectAnswer(index, selectedText, event) {
     userAnswers[currentQuestionIndex] = selectedText;
     document.querySelectorAll(".option").forEach((btn) => btn.classList.remove("selected"));
-    event.target.classList.add("selected");
+    
+    if (event && event.target) {
+        event.target.classList.add("selected");
+    }
 }
 
 function nextQuestion() {

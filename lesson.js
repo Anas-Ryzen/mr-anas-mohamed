@@ -9,15 +9,10 @@ if(!localStorage.token){
     },300)
 }
 let attachment = document.getElementById('open-attachment')
-document.addEventListener('DOMContentLoaded', function() {
-    // عند بدء تحميل الصفحة
-    const loaderOverlay = document.getElementById('loader-overlay');
-    
-    // يتم إخفاء الـ overlay بعد 1.5 ثانية
-    setTimeout(function() {
-      loaderOverlay.style.display = 'none'; // إخفاء الـ overlay والدائرة
-    }, 2500);
-});  
+let attachment_container = document.getElementById('attachment-section')
+let classwork = document.getElementById('classwork')
+const loaderOverlay = document.getElementById('loader-overlay');
+
 function displaySuccessPopup(textinp) {
     const popup = document.getElementById("loginPopup");
     popup.style.display = "block";
@@ -38,9 +33,11 @@ localStorage.removeItem("description")
 let title = document.getElementById("course-title")
 let des = document.getElementById("course-description")
 let videoUrl
+let videoUrl2
+let videoUrl3
 if(localStorage.nohwyet == 'yes'){
     setTimeout(function(){
-        displaySuccessPopup('لم يتم نزول الواجب حتي الان')
+        displaySuccessPopup('لا يوجد واجب متوفر حاليا')
         localStorage.removeItem('nohwyet')
     },300)
 }
@@ -56,26 +53,45 @@ fetch(csvUrl2)
     fetch(csvUrl)
         .then(response => response.text())
         .then(data => {
-            const rows2 = data.split('\n'); // تقسيم البيانات إلى صفوف
-            if(rows[num].split(',')[5].includes(localStorage.token) || Number(rows[num].split(',')[2]) == 0){
+            // const rows2 = data.split('\n'); // تقسيم البيانات إلى صفوف
+            if(rows[num].split(',')[7].includes(localStorage.token) || Number(rows[num].split(',')[2]) == 0){
                 title.innerHTML = rows[num].split(',')[0]
                 des.innerHTML = rows[num].split(',')[1]
                 videoUrl = rows[num].split(',')[4]
-                let file = rows[num].split(',')[7]
+                videoUrl2 = rows[num].split(',')[5]
+                videoUrl3 = rows[num].split(',')[6]
+                let file = rows[num].split(',')[9]
                 let embedUrl = getEmbedUrl(videoUrl);
+                let embedUrl2 = getEmbedUrl(videoUrl2);
+                let embedUrl3 = getEmbedUrl(videoUrl3);
                 if (embedUrl) {
                     document.getElementById("course-video").src = embedUrl;
+                    document.getElementById("classwork-video").src = embedUrl2
+                    if(document.getElementById('hw-video-section') && videoUrl3 !== ''){
+                        document.getElementById("hw-video").src = embedUrl3
+                    }
+                    else if(videoUrl3 == '' && document.getElementById('hw-video-section')){
+                        document.getElementById('hw-video-section').remove()
+                    }
                 } else {
                     alert("رابط الفيديو غير مدعوم!");
                 }
+                if(videoUrl2 == ''){
+                    classwork.classList.add('hidden')
+                }
                 if(file == ''){
-                    attachment.innerHTML = 'لا يوجد ملفات'
+                    attachment_container.classList.add('hidden')
                 }
                 else if(file !== ''){
                     attachment.onclick = function(){
                         window.open(`https://cdn.jsdelivr.net/gh/Anas-Ryzen/${file}@main/${file}.pdf` , '_blank')
                     }
                 }
+                loaderOverlay.style.display = 'none';
+
+            }
+            else{
+                location.href = 'courses.html'
             }
         })
     
@@ -84,16 +100,6 @@ fetch(csvUrl2)
 window.onbeforeunload = function() {    
     localStorage.number = num
 };
-
-let hwbtn = document.getElementById("open-assignment")
-
-hwbtn.onclick = function(){
-    localStorage.number = num
-    localStorage.name = title.innerHTML
-    localStorage.description = des.innerHTML
-    location.href = "hw.html"
-}
-
 
 function getEmbedUrl(url) {
     let videoId;
@@ -121,21 +127,7 @@ function getEmbedUrl(url) {
     return "";
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+let hwbtn = document.getElementById("open-assignment")
 
 let pastresults = document.getElementById("pastresults");
 
@@ -155,15 +147,21 @@ fetch(csvUrl)
                         let resultItem = document.createElement("div");
                         resultItem.textContent = rows[i].split(',')[k+1]+'%';
                         pastresults.appendChild(resultItem);
-                        const loaderOverlay = document.getElementById('loader-overlay');
-                        loaderOverlay.style.display = 'none';
+                        hwbtn.style.cursor = "not-allowed";
                     }
                 }
             }
         }
 
         if (pastresults.innerHTML === "") {
+            document.getElementById('hw-video-section').remove()
             pastresults.innerHTML = "<div>لا توجد نتائج سابقة لهذا الاختبار</div>";
+            hwbtn.onclick = function(){
+                localStorage.number = num
+                localStorage.name = title.innerHTML
+                localStorage.description = des.innerHTML
+                location.href = "hw.html"
+            }
         }
     });
 

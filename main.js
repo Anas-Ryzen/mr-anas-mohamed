@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // يتم إخفاء الـ overlay بعد 1.5 ثانية
     setTimeout(function() {
       loaderOverlay.style.display = 'none'; // إخفاء الـ overlay والدائرة
-    }, 500);
+    }, 1000);
 }); 
 
 function displaySuccessPopup(textinp) {
